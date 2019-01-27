@@ -1,0 +1,40 @@
+format_version: 2
+environments:
+  ci:
+    pipelines:
+      - "team2UI"
+      
+pipelines:
+  "team2UI":
+    group: team2
+    materials:
+      ui:
+        git: "git@github.com:Manikandan-K/team2-ui.git"
+    stages:
+      - test:
+          jobs:
+            test:
+              resources:
+                - node-and-java
+              tasks:
+                - script: |
+                    yarn install
+                    yarn run test_with_coverage
+      - build:
+          jobs:
+            build:
+              resources:
+                - node-and-java
+              tasks:
+                - script: |
+                    yarn install
+                    REACT_APP_API_URL="http://localhost:9090" yarn run build              
+
+      - deploy:
+           jobs:
+            deploy:
+              resources:
+                - node-and-java
+              tasks:
+                - script: |
+                    sh ./buildAndDeploy/deploy.sh team2-bootcamp-jan-2019
