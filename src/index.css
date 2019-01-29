@@ -3,3 +3,27 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.select-location-modal{
+  display: block;
+}
+
+.select-location-modal .location{
+  padding: 20px 20px;
+  cursor: pointer;
+}
+
+.select-location-modal .location:hover, .select-location-modal .location.selected{
+  background-color: #eee;
+}
+
+.modal-backdrop{
+  position: 'fixed';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #808080;
+  padding: 50;
+  opacity: 0.6;
+}
