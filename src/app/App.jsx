@@ -6,6 +6,7 @@ import configureStore from './store';
 import createHistory from 'history/createBrowserHistory'
 import Header from './Header'
 import Home from './Home'
+import './App.css';
 
 const browserHistory = createHistory()
 
@@ -18,9 +19,11 @@ const Routes = () => (
 );
 
 const Main = () => (
-  <div>
+  <div className='container'>
     <Header />
-    <Routes />
+    <div>
+      <Routes />
+    </div>
   </div>  
 );
 

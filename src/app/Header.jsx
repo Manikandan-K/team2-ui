@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Header = () => (
-  <div >
+  <header className='app-header'>
     <h1>Just Cinemas</h1>
-  </div >
+  </header>
 );
 
 Header.defaultProps = {};

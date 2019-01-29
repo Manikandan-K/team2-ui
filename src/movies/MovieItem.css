@@ -1,0 +1,10 @@
+.movie-item-image {
+    width: 100%;
+}
+
+.movie-item-name {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: white;
+}

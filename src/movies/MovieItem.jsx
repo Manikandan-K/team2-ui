@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './MovieItem.css';
 
 const MovieItem = ({ name, slug }) => {
   const imageUrl = `https://img.spicinemas.in/resources/images/movies/${slug}/150x207.jpg`;
   return (
-    <div>
-      <img alt={name} src={imageUrl} />
-      <h5>{name}</h5>
+    <div className='movie-item col-md-2'>
+      <img className='movie-item-image' alt={name} src={imageUrl} />
+      <h5 className='movie-item-name'>{name}</h5>
     </div>
   )
 }
-
 
 MovieItem.defaultProps = {};
 

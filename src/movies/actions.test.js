@@ -19,12 +19,12 @@ describe("movies/actions", () => {
 
   it('should fetch movies from server which are now-showing and return FETCH_MOVIES_SUCCESS', async () => {
     mock
-      .onGet('http://localhost:9090/movies/now-showing')
+      .onGet('http://localhost:9090/movies?type=NOW_SHOWING&location=chennai&languages=')
       .reply(200, apiData);
 
     let expectedActions = []
     
-    store.dispatch(fetchMovies()).then(() => {
+    store.dispatch(fetchMovies('NOW_SHOWING', 'chennai', '')).then(() => {
       expect(store.getActions()[0]).toEqual({ type: FETCH_MOVIES_PROGRESS });
       expect(store.getActions()[1]).toEqual({
         type: FETCH_MOVIES_SUCCESS,

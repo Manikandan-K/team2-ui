@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import MovieItem from './MovieItem';
 import { connect } from 'react-redux';
 import fetchMovies from './actions';
+import './MovieGrid.css';
 
 class MovieGrid extends Component {
 
   componentDidMount() {
-    this.props.fetchMovies()
+    this.props.fetchMovies();
   }
 
   render() {
@@ -20,7 +21,7 @@ class MovieGrid extends Component {
 
   showMovies() {
     return (
-      <div>
+      <div className='movie-items-container row'>
         {this.props.movies.items.map(({ name, slug }) => (
           <MovieItem key={name} name={name} slug={slug} />
         ))}
@@ -57,6 +58,6 @@ export default connect(
   (state) => ({
     movies: state.movies
   }), 
-  (dispatch) => ({
-    fetchMovies: () => dispatch(fetchMovies())
+  (dispatch, ownProps) => ({
+    fetchMovies: () => dispatch(fetchMovies(ownProps.type, ownProps.location, ownProps.languages))
   }))(MovieGrid);
