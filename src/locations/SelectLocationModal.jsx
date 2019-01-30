@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import fetchLocations from '../locations/actions';
 
 class SelectLocationModal extends Component {
   constructor(props){
     super(props);
     this.state = {
       location: this.props.location,
-      show: this.props.show
+      show: this.props.show,
     }
-  }
-
-  componentDidMount() {
-    this.props.fetchLocations();
   }
 
   locationClicked(e){
@@ -22,10 +16,10 @@ class SelectLocationModal extends Component {
 
   render() {
     // Render nothing if the "show" prop is false
-    if(!this.props.show) {
+    if(!this.props.show || this.props.locations.items.length == 0) {
       return null;
     }
-    debugger
+
     return (
       <div>
         <div className="backdrop modal-backdrop">
@@ -39,21 +33,15 @@ class SelectLocationModal extends Component {
               </div>
               <div className="modal-body">
                 <div className="row">
-                  <div className="col-md-4">
-                    <div className={'location ' + (this.state.location == "Chennai" ? "selected" : "")} onClick={this.locationClicked.bind(this)} data-value="Chennai">
-                      Chennai
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className={"location " + (this.state.location == "Trichy" ? "selected" : "")} onClick={this.locationClicked.bind(this)} data-value="Trichy">
-                      Trichy
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className={"location " + (this.state.location == "Madurai" ? "selected" : "")} onClick={this.locationClicked.bind(this)} data-value="Madurai">
-                      Madurai
-                    </div>
-                  </div>
+                  {
+                    this.props.locations.items.map((record) => {
+                      return <div className="col-md-4">
+                              <div className={'location ' + (this.state.location == record.id ? "selected" : "")} onClick={this.locationClicked.bind(this)} data-value={record.id}>
+                                {record.city}
+                              </div>
+                            </div>
+                    })
+                  }
                 </div>
               </div>
               <div className="modal-footer">
@@ -71,14 +59,11 @@ SelectLocationModal.propTypes = {
   onClose: PropTypes.func,
   show: PropTypes.bool,
   children: PropTypes.node,
-  location: PropTypes.string
+  location: PropTypes.string,
+  locations: PropTypes.shape({
+    items: PropTypes.array,
+  })
 };
 
-export default connect(
-  (state) => ({
-    locations: state.locations
-  }),
-  (dispatch, ownProps) => ({
-    fetchLocations: () => dispatch(fetchLocations(ownProps.type, ownProps.location, ownProps.languages))
-  }))(SelectLocationModal);
+export default SelectLocationModal;
 

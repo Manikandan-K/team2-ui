@@ -8,7 +8,15 @@ import './MovieGrid.css';
 class MovieGrid extends Component {
 
   componentDidMount() {
-    this.props.fetchMovies();
+    if(this.props.location && !this.props.movies.fetching){
+      this.props.fetchMovies();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    if(this.props.location && !this.props.movies.fetching && prevProps.location != this.props.location){
+      this.props.fetchMovies();
+    }
   }
 
   render() {
@@ -57,7 +65,7 @@ MovieGrid.propTypes = {
 export default connect(
   (state) => ({
     movies: state.movies
-  }), 
+  }),
   (dispatch, ownProps) => ({
     fetchMovies: () => dispatch(fetchMovies(ownProps.type, ownProps.location, ownProps.languages))
   }))(MovieGrid);
