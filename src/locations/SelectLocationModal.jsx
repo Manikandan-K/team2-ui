@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import fetchLocations from '../locations/actions';
 
 class SelectLocationModal extends Component {
   constructor(props){
@@ -8,6 +10,10 @@ class SelectLocationModal extends Component {
       location: this.props.location,
       show: this.props.show
     }
+  }
+
+  componentDidMount() {
+    this.props.fetchLocations();
   }
 
   locationClicked(e){
@@ -68,4 +74,11 @@ SelectLocationModal.propTypes = {
   location: PropTypes.string
 };
 
-export default SelectLocationModal;
+export default connect(
+  (state) => ({
+    locations: state.locations
+  }),
+  (dispatch, ownProps) => ({
+    fetchLocations: () => dispatch(fetchLocations(ownProps.type, ownProps.location, ownProps.languages))
+  }))(SelectLocationModal);
+

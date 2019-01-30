@@ -12,7 +12,7 @@ const fetchMoviesInProgress = {
 }
 
 const movieDataFetched = (data) => ({
-  type: FETCH_MOVIES_SUCCESS, 
+  type: FETCH_MOVIES_SUCCESS,
   payload: data,
 });
 
@@ -33,7 +33,7 @@ const fetchMovies = (type, location, languages) => {
       const moviesData = movies.data.map(movie => {
         const sluggedData = slug(changeCase.sentenceCase(movie.name), { lower: true });
         return {...movie, slug: sluggedData}
-      });  
+      });
       dispatch(movieDataFetched(moviesData))
     } catch(error) {
       dispatch(movieDataFetchFailure)
