@@ -52,16 +52,15 @@ class Home extends Component {
 
     return (
       <div>
-        <select onChange={(e) => {this.locationSelected(e.currentTarget.value)}}>
+        <select value={this.state.location} onChange={(e) => {this.locationSelected(e.currentTarget.value)}}>
         {
-          this.props.locations.items.map((record) => {
-            return <option value={record.id} selected={this.state.location == record.id}>{record.city}</option>
+          this.props.locations.items.map((record, index) => {
+            return <option key={`location-${index}`} value={record.id}>{record.city}</option>
           })
         }
         </select>
         <CustomTabs tabHeaders={tabs} tabContents={contents} />
         <SelectLocationModal show={this.state.location === null || this.state.location == undefined} locationSelected={this.locationSelected.bind(this)} locations={this.props.locations} />
-        <MovieGrid />
       </div>
     );
   }
