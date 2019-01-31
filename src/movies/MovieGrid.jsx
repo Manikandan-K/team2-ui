@@ -35,9 +35,13 @@ class MovieGrid extends Component {
   showMovies() {
     return (
       <div className='movie-items-container row'>
-        {this.props.movies.items.map(({ id, name, slug, experiences }) => (
-          <MovieItem id={id} key={name} name={name} slug={slug} experiences={experiences} action={this.onMovieItemClick.bind(this)} />
+        {this.props.movies.items.map(({ id, name, slug, experiences, language }) => (
+          <MovieItem id={id} key={name} name={name} slug={slug} experiences={experiences} action={this.onMovieItemClick.bind(this)} language={language} />
+
         ))}
+        {this.props.movies.items.length == 0 &&
+          <label className="no-show-message">Sorry, No shows available for this.</label>
+        }
       </div>
     );
   }

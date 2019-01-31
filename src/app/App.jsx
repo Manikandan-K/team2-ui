@@ -7,6 +7,7 @@ import createHistory from 'history/createBrowserHistory'
 import Header from './Header'
 import Home from './Home'
 import Shows from '../shows/Shows'
+import Booking from './Booking';
 import './App.css';
 
 const browserHistory = createHistory()
@@ -18,6 +19,7 @@ const Routes = () => (
     <div>
       <Route component={Home} exact path="/" />
       <Route component={Shows} path="/movies/:movieId/shows" />
+      <Route component={Booking} path="/booking" />
     </div>
   </ConnectedRouter>
 );
