@@ -6,6 +6,7 @@ import configureStore from './store';
 import createHistory from 'history/createBrowserHistory'
 import Header from './Header'
 import Home from './Home'
+import Shows from '../shows/Shows'
 import './App.css';
 
 const browserHistory = createHistory()
@@ -14,7 +15,10 @@ const store = configureStore(browserHistory);
 
 const Routes = () => (
   <ConnectedRouter history={browserHistory}>
-    <Route component={Home} path="/" />
+    <div>
+      <Route component={Home} exact path="/" />
+      <Route component={Shows} path="/movies/:movieId/shows" />
+    </div>
   </ConnectedRouter>
 );
 
@@ -24,7 +28,7 @@ const Main = () => (
     <div>
       <Routes />
     </div>
-  </div>  
+  </div>
 );
 
 const App = () => (

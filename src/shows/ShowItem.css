@@ -1,0 +1,19 @@
+.show-item {
+    display: flex;
+}
+
+.show-item-movie {
+    flex: 2;
+}
+
+.show-item-cinema {
+    flex: 1;
+}
+
+.show-item-experience {
+    flex: 1;
+}
+
+.show-item-showtime {
+    flex: 1;
+}
