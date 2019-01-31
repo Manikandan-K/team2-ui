@@ -1,0 +1,29 @@
+.show-select-dates {
+    display: flex;
+}
+
+.show-date {
+    padding: 10px;
+    border: 1px solid lightgray;
+    color: white;
+    background: gray;
+}
+
+.show-date.active {
+    background: blue;
+}
+
+.show-header {
+    display: flex;
+}
+
+.show-tickets, .show-dates {
+    display: flex;
+    align-items: center;
+    margin: 5px 15px;
+}
+
+.show-select-dates, .show-select-tickets {
+    height: 100%;
+    margin-left: 15px;
+}
