@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import createHistory from 'history/createBrowserHistory'
 import Header from './Header'
-import Home from './Home'
+import Home from './Home';
+import Booking from './Booking';
 import './App.css';
 
 const browserHistory = createHistory()
@@ -14,7 +15,10 @@ const store = configureStore(browserHistory);
 
 const Routes = () => (
   <ConnectedRouter history={browserHistory}>
-    <Route component={Home} path="/" />
+  <div>
+    <Route component={Home} exact path="/" />
+    <Route component={Booking} path="/booking" />
+    </div>
   </ConnectedRouter>
 );
 
