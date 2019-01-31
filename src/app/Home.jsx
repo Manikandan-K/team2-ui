@@ -5,6 +5,7 @@ import SelectLocationModal from '../locations/SelectLocationModal'
 import { connect } from 'react-redux';
 import fetchLocations from '../locations/actions';
 import PropTypes from 'prop-types';
+import './Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -52,13 +53,15 @@ class Home extends Component {
 
     return (
       <div>
-        <select value={this.state.location} onChange={(e) => {this.locationSelected(e.currentTarget.value)}}>
-        {
-          this.props.locations.items.map((record, index) => {
-            return <option key={`location-${index}`} value={record.id}>{record.city}</option>
-          })
-        }
-        </select>
+        <div className="app-home-location">
+          <select value={this.state.location} onChange={(e) => {this.locationSelected(e.currentTarget.value)}}>
+          {
+            this.props.locations.items.map((record, index) => {
+              return <option key={`location-${index}`} value={record.id}>{record.city}</option>
+            })
+          }
+          </select>
+        </div>
         <CustomTabs tabHeaders={tabs} tabContents={contents} />
         <SelectLocationModal show={this.state.location === null || this.state.location == undefined} locationSelected={this.locationSelected.bind(this)} locations={this.props.locations} />
       </div>

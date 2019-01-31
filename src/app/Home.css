@@ -1,0 +1,9 @@
+.app-home-location {
+    width: 100%;
+}
+
+.app-home-location select {
+    height: 25px;
+    width: 150px;
+    float: right;
+}
