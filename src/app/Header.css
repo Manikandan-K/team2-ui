@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
+
+.app-header-logo {
+    height: 70px;
+}
+
+.app-header-title {
+    display: inline;
+    vertical-align: middle;
+    font-size: 30px;
+    margin-left: 10px;
+    font-family: 'Slabo 27px';
+}

@@ -8,7 +8,15 @@ import './MovieGrid.css';
 class MovieGrid extends Component {
 
   componentDidMount() {
-    this.props.fetchMovies();
+    if(this.props.location && !this.props.movies.fetching){
+      this.props.fetchMovies();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    if(this.props.location && !this.props.movies.fetching && prevProps.location != this.props.location){
+      this.props.fetchMovies();
+    }
   }
 
   render() {
@@ -22,9 +30,12 @@ class MovieGrid extends Component {
   showMovies() {
     return (
       <div className='movie-items-container row'>
-        {this.props.movies.items.map(({ name, slug }) => (
-          <MovieItem key={name} name={name} slug={slug} />
+        {this.props.movies.items.map(({ name, slug, experiences, language }) => (
+          <MovieItem key={name} name={name} slug={slug} experiences={experiences} language={language} />
         ))}
+        { this.props.movies.items.length == 0 &&
+          <label className="no-show-message">Sorry, No shows available for this.</label>
+        }
       </div>
     );
   }
@@ -57,7 +68,7 @@ MovieGrid.propTypes = {
 export default connect(
   (state) => ({
     movies: state.movies
-  }), 
+  }),
   (dispatch, ownProps) => ({
     fetchMovies: () => dispatch(fetchMovies(ownProps.type, ownProps.location, ownProps.languages))
   }))(MovieGrid);
