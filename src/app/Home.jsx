@@ -48,7 +48,7 @@ class Home extends Component {
 
     let selectLocationModal;
     const tabs = ['Now showing', 'Upcoming'];
-    const contents = [<MovieGrid type='NOW_SHOWING' location={this.state.location} /> , <MovieGrid type='UPCOMING' location='chennai' />];
+    const contents = [<MovieGrid type='NOW_SHOWING' location={this.state.location} /> , <MovieGrid type='UPCOMING' location={this.state.location}/>];
 
     return (
       <div>
