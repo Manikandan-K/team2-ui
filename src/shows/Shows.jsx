@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchShows from './actions';
 import { push } from 'react-router-redux';
-import selectShow from '../app/actions';
+import { selectShow } from '../app/actions';
 import './Shows.css';
 import ShowItem from './ShowItem';
 

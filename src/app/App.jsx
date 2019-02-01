@@ -8,6 +8,8 @@ import Header from './Header'
 import Home from './Home'
 import Shows from '../shows/Shows'
 import Booking from '../booking/Booking';
+import MovieDetail from '../movies/MovieDetail';
+
 import './App.css';
 
 const browserHistory = createHistory()
@@ -19,6 +21,7 @@ const Routes = () => (
     <div>
       <Route component={Home} exact path="/" />
       <Route component={Shows} path="/movies/:movieId/shows" />
+      <Route path="/movies/:movieId" component={MovieDetail} />
       <Route component={Booking} path="/shows/:showId/booking" />
     </div>
   </ConnectedRouter>
