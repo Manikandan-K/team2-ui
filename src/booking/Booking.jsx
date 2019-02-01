@@ -1,6 +1,8 @@
 import React from 'react';
 
-import bookSeat from '../booking/actions';
+import bookSeat from './actions';
+import { URLSearchParams } from 'url';
+import {connect} from 'react-redux';
 
 const BOOKING_INITIAL = 'BOOKING_INITIAL';
 const BOOKING_STARTED = 'BOOKING_STARTED';
@@ -45,6 +47,15 @@ class Booking extends React.Component {
         this.updateUserEmail = this.updateUserEmail.bind(this);
         this.doneBooking = this.doneBooking.bind(this);
         this.submit = this.submit.bind(this);
+
+    }
+
+    componentDidMount() {
+        const params = new URLSearchParams(this.props.location.search);
+        const numberOfSeats = params.get('numberOfSeats');
+        const showId = params.get('showId');
+
+        
     }
 
     getFormattedDate(date) {
@@ -144,7 +155,7 @@ class Booking extends React.Component {
                     </div>
 
                     <h4>
-                        You will receive an email with details.
+                        Save the reference.
                     </h4>
                 </div>
             </div>
