@@ -7,7 +7,7 @@ const ShowItem = ({ id, movieName, cinema, experience, showTime, header = false,
     let showTimeEl = showTime;
 
     if (!header) {
-        showTimeEl = <button className='showtime-btn'>{new moment(showTime).format('hh:mm A')}</button>;
+        showTimeEl = <button className='showtime-btn'>{showTime}</button>;
     }
     return (
         <div className={header?'show-item-header':'show-item'} onClick={() => !header && action({ id, movieName, cinema, experience, showTime })}>
