@@ -7,7 +7,8 @@ class MovieDetail extends Component {
         super(props);
     }
 
-    onBookNowClick(movieId) {
+    onBookNowClick() {
+        const movieId = this.props.movie.id;
         this.props.navigateToShows(movieId);
     }
 
