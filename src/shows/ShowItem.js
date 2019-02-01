@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ShowItem.css';
 
-const ShowItem = ({ movieName, cinema, experience, showTime, header = false }) => {
+const ShowItem = ({ id, movieName, cinema, experience, showTime, header = false, action }) => {
     let showTimeEl = showTime;
 
     if (!header) {
         showTimeEl = <button>{showTime}</button>;
     }
     return (
-        <div className='show-item'>
+        <div className='show-item' onClick={() => !header && action({ id, movieName, cinema, experience, showTime })}>
             <div className='show-item-movie'>{movieName}</div>
             <div className='show-item-cinema'>{cinema}</div>
             <div className='show-item-experience'>{experience}</div>

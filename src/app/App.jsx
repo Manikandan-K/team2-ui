@@ -19,7 +19,7 @@ const Routes = () => (
     <div>
       <Route component={Home} exact path="/" />
       <Route component={Shows} path="/movies/:movieId/shows" />
-      <Route component={Booking} path="/booking" />
+      <Route component={Booking} path="/shows/:showId/booking" />
     </div>
   </ConnectedRouter>
 );

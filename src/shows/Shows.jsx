@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchShows from './actions';
+import { push } from 'react-router-redux';
+import selectShow from '../app/actions';
 import './Shows.css';
 import ShowItem from './ShowItem';
 
@@ -61,6 +63,13 @@ class Shows extends React.Component {
         return mappedDates;
     }
 
+    selectShow(show) {
+        const { tickets } = this.state;
+        const { navigateToBooking, selectMovieShow } = this.props;
+        selectMovieShow(show);
+        navigateToBooking(show.id, tickets);
+    }
+
     renderShows() {
         const { shows } = this.props;
         return (
@@ -68,8 +77,8 @@ class Shows extends React.Component {
                 <ShowItem movieName="MOVIE" cinema="CINEMA" experience="EXPERIENCE" showTime="SHOWTIME" header={true} />
                 {
                     shows.map((show, index) => (
-                        <ShowItem key={`show-item-${index}`} movieName={show.movieName} cinema={show.screenName}
-                            experience={show.experiences} showTime={show.showTime} />
+                        <ShowItem key={`show-item-${index}`} id={show.id} movieName={show.movieName} cinema={show.screenName}
+                            experience={show.experiences} showTime={show.showTime} action={this.selectShow.bind(this)} />
                     ))
                 }
             </div>
@@ -121,5 +130,7 @@ export default connect(
         shows: state.shows.items
     }),
     (dispatch) => ({
-        fetchShows: (movieId, locationId, showDate) => dispatch(fetchShows(movieId, locationId, showDate))
+        fetchShows: (movieId, locationId, showDate) => dispatch(fetchShows(movieId, locationId, showDate)),
+        selectMovieShow: (show) => dispatch(selectShow(show)),
+        navigateToBooking: (showId, tickets) => dispatch(push(`/shows/${showId}/booking?tickets=${tickets}`))
     }))(Shows);
