@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MovieItem from './MovieItem';
 import { connect } from 'react-redux';
 import fetchMovies from './actions';
+import { selectMovie } from '../app/actions';
 import { push } from 'react-router-redux';
 import './MovieGrid.css';
 
@@ -28,8 +29,9 @@ class MovieGrid extends Component {
     return this.props.movies.error || false ? this.showError() : this.showMovies();
   }
 
-  onMovieItemClick(movieId) {
-    this.props.navigateToShows(movieId);
+  onMovieItemClick(movie) {
+    this.props.selectMovie(movie)
+    this.props.navigateToMovieDetail(movie.id);
   }
 
   showMovies() {
@@ -77,5 +79,6 @@ export default connect(
   }),
   (dispatch, ownProps) => ({
     fetchMovies: () => dispatch(fetchMovies(ownProps.type, ownProps.location, ownProps.languages)),
-    navigateToShows: (movieId) => dispatch(push(`/movies/${movieId}/shows`))
+    selectMovie: (movie) => dispatch(selectMovie(movie)),
+    navigateToMovieDetail: (movieId) => dispatch(push(`/movies/${movieId}`))
   }))(MovieGrid);
