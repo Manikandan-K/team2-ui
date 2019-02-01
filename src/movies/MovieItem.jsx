@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MovieItem.css';
 
-const MovieItem = ({ id, name, slug, experiences, action, language }) => {
+const MovieItem = ({ id, name, slug, experiences, action, language, synopsis, cast, crew, runTime }) => {
   const imageUrl = `https://img.spicinemas.in/resources/images/movies/${slug}/150x207.jpg`;
   return (
-    <div className='movie-item col-md-2 col-sm-6' onClick={() => action({ id, name, slug, experiences, language })}>
+    <div className='movie-item col-md-2 col-sm-6' onClick={() => action({ id, name, slug, experiences, language, synopsis, cast, crew, runTime })}>
       <img className='movie-item-image' alt={name} src={imageUrl} />
       <h5 className='movie-item-name'>{name}</h5>
       <h5 className='movie-item-language'>{language}</h5>

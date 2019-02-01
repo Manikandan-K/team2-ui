@@ -17,14 +17,64 @@ class MovieDetail extends Component {
         const imageUrl = `https://img.spicinemas.in/resources/images/movies/${movie.slug}/1000x320.jpg`;
 
         return (
-            <div>
-                <h2 className="movie-title">{movie.name}</h2>
+            <div classNam="container">
+                <h2 className="movie-title">{movie.name} <span className="language">({movie.language})</span></h2>
 
                 <div className="banner">
                     <img className='movie-item-image' alt={movie.name} src={imageUrl} />
                 </div>
 
-                <button onClick={this.onBookNowClick.bind(this)}>Book Now</button>
+                <div className="row">
+                    <div className="col-sm-12 text-right">
+                        <button className="btn btn-primary book-btn" onClick={this.onBookNowClick.bind(this)}>Book Now</button>
+                    </div>
+                </div>
+
+                <div className="row" >
+                    <div className="col-sm-12" >
+                        <div className="section">
+                            <span className="section-title">
+                                Synopsis
+                            </span>
+                            <span>
+                                {movie.synopsis?movie.synopsis:'--'}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="col-sm-12" >
+                        <div className="section">
+                            <span className="section-title">
+                                Crew
+                            </span>
+                            <span>
+                                {movie.crew?movie.crew:'--'}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="col-sm-12" >
+                        <div className="section">
+                            <span className="section-title">
+                                Cast
+                            </span>
+                            <span>
+                                {movie.cast?movie.cast:'--'}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="col-sm-12" >
+                        <div className="section">
+                            <span className="section-title">
+                                Runtime
+                            </span>
+                            <span>
+                                {movie.runtime?movie.runtime + ' Minutes':'--'}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
