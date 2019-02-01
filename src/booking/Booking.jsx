@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import bookSeat from '../booking/actions';
+import bookSeat from './actions';
 
 const BOOKING_INITIAL = 'BOOKING_INITIAL';
 const BOOKING_STARTED = 'BOOKING_STARTED';
@@ -29,6 +29,7 @@ class Booking extends React.Component {
         this.updateUserEmail = this.updateUserEmail.bind(this);
         this.doneBooking = this.doneBooking.bind(this);
         this.submit = this.submit.bind(this);
+
     }
 
     componentWillMount() {
@@ -139,7 +140,7 @@ class Booking extends React.Component {
                     </div>
 
                     <h4>
-                        You will receive an email with details.
+                        Save the reference.
                     </h4>
                 </div>
             </div>

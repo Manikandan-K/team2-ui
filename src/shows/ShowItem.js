@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ShowItem.css';
+import moment from 'moment';
 
 const ShowItem = ({ id, movieName, cinema, experience, showTime, header = false, action }) => {
     let showTimeEl = showTime;
 
     if (!header) {
-        showTimeEl = <button>{showTime}</button>;
+        showTimeEl = <button>{new moment(showTime).format('hh:mm A')}</button>;
     }
     return (
         <div className='show-item' onClick={() => !header && action({ id, movieName, cinema, experience, showTime })}>
