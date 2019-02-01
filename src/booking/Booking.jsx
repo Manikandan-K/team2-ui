@@ -13,7 +13,9 @@ class Booking extends React.Component {
     constructor(props) {
         super(props);
         this.showId = props.match.params.showId;
-        this.numberOfSeats = 1;
+        this.numberOfSeats = props.tickets;
+        this.showDate = props.showDate;
+
         this.state = {
             userName: '',
             userEmail: '',
@@ -47,14 +49,12 @@ class Booking extends React.Component {
         this.setState({
             userName: event.target.value
         });
-        console.log('Username: ', event.target.value);
     }
 
     updateUserEmail(event) {
         this.setState({
             userEmail: event.target.value
         });
-        console.log('Useremail: ', event.target.value);
     }
 
     doneBooking(status) {
@@ -99,7 +99,7 @@ class Booking extends React.Component {
                         <h3 className="screen">{cinema}</h3>
 
                         <div>
-                            Show time: {showTime}
+                            Show time: {this.getFormattedDate(this.showDate) + " " + showTime}
                         </div>
                         <div>
                             Seats: {this.numberOfSeats}
@@ -151,7 +151,9 @@ class Booking extends React.Component {
 
 export default connect(
     (state) => ({
-        show: state.app.show
+        show: state.app.show,
+        tickets: state.app.tickets,
+        showDate: state.app.showDate,
     }),
     (dispatch, ownProps) => ({
         navigate: (url) => dispatch(push(url))

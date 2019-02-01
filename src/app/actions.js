@@ -5,9 +5,9 @@ const selectShowAction = (data) => ({
     payload: data,
 });
 
-const selectShow = (show) => {
+const selectShow = (show, tickets, showDate) => {
     return async (dispatch) => {
-        dispatch(selectShowAction(show));
+        dispatch(selectShowAction({ show, tickets, showDate }));
     }
 };
 

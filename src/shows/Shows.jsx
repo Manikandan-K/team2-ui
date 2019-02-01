@@ -64,9 +64,9 @@ class Shows extends React.Component {
     }
 
     selectShow(show) {
-        const { tickets } = this.state;
+        const { tickets, selectedDate } = this.state;
         const { navigateToBooking, selectMovieShow } = this.props;
-        selectMovieShow(show);
+        selectMovieShow(show, tickets, selectedDate);
         navigateToBooking(show.id, tickets);
     }
 
@@ -131,6 +131,6 @@ export default connect(
     }),
     (dispatch) => ({
         fetchShows: (movieId, locationId, showDate) => dispatch(fetchShows(movieId, locationId, showDate)),
-        selectMovieShow: (show) => dispatch(selectShow(show)),
+        selectMovieShow: (show, tickets, showDate) => dispatch(selectShow(show, tickets, showDate)),
         navigateToBooking: (showId, tickets) => dispatch(push(`/shows/${showId}/booking?tickets=${tickets}`))
     }))(Shows);
