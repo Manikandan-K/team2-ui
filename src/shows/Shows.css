@@ -3,18 +3,21 @@
 }
 
 .show-date {
-    padding: 10px;
-    border: 1px solid lightgray;
+    padding: 20px;
+    border: 1px solid #596158;
     color: white;
     background: gray;
 }
 
 .show-date.active {
-    background: blue;
+    background: #158eec;
 }
 
 .show-header {
     display: flex;
+    background-color: #596158;
+    color: white;
+    font-size: 14px;
 }
 
 .show-tickets, .show-dates {
@@ -23,7 +26,19 @@
     margin: 5px 15px;
 }
 
+.show-dates {
+    width: 100%;
+}
 .show-select-dates, .show-select-tickets {
     height: 100%;
     margin-left: 15px;
+}
+
+.show-select-tickets {
+    color: white;
+    font-size: 15px;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+    background-color: black;
 }

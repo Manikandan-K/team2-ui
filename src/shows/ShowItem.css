@@ -1,5 +1,28 @@
+
+.show-item-header {
+    display: flex;
+    background-color: grey;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #272d25;
+}
+
 .show-item {
     display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #272d25;
+    font-size: 16px;
+}
+
+.show-item:nth-child(even) {
+    background-color: #596158;
+    color: #FFF;
+}
+
+.show-item:nth-child(odd) {
+    background-color: #272d25;
+    color: #FFF;
 }
 
 .show-item-movie {
@@ -16,4 +39,11 @@
 
 .show-item-showtime {
     flex: 1;
+}
+
+.showtime-btn {
+    background-color: #2faf2f;
+    color: white;
+    width: 100px;
+    font-size: 14px;
 }
