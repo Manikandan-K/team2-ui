@@ -72,6 +72,10 @@ class Shows extends React.Component {
 
     renderShows() {
         const { shows } = this.props;
+
+        if(shows.length === 0) {
+            return <div className="shows-not-available"><span>Sorry, No shows available. Please check another date.</span></div>
+        }
         return (
             <div>
                 <ShowItem movieName="MOVIE" cinema="CINEMA" experience="EXPERIENCE" showTime="SHOWTIME" header={true} />

@@ -32,6 +32,7 @@
 .show-select-dates, .show-select-tickets {
     height: 100%;
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .show-select-tickets {
@@ -41,4 +42,13 @@
     height: 40px;
     width: 40px;
     background-color: black;
+}
+
+.shows-not-available {
+    padding: 100px;
+    background-color: #596158;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    height: 300px;
 }
